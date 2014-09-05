@@ -1,4 +1,3 @@
-sapanhinmagazine-backend
-========================
+# apps
 
-Sapanhinmagazine Backend Management System
+a [Sails](http://sailsjs.org) application
