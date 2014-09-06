@@ -34,8 +34,33 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
+  '/apibook/issue_detail/:id': {
+    controller: 'Apibook',
+    action: 'issue_detail'
+  },
+
+  '/apibook/issue_lists/:year': {
+    controller: 'Apibook',
+    action: 'issue_list_specific_year'
+  },
+  '/apibook/issue_lists': {
+    controller: 'Apibook',
+    action: 'issue_list_all_year'
+  },
+
+  '/apibook/year_lists': {
+    controller: 'Apibook',
+    action: 'year_lists'
+  },
+
+
+
+  'post /book/create': {
+    controller: 'Book',
+    action: 'create'
+  },
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

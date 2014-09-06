@@ -80,6 +80,10 @@ module.exports = {
    * 'development' environment.                                              *
    ***************************************************************************/
 
-   // environment: process.env.NODE_ENV || 'development'
+  environment: process.env.NODE_ENV || 'development',
+
+  native_mongodb : {
+    url : "mongodb://127.0.0.1:27017/sapanhinmagazine-backend"
+  }
 
 };
