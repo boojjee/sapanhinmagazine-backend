@@ -1,7 +1,53 @@
-<div>
-   <% _.each(data, function(data){ %>
-      
-    <%= data._id %>
-    
-   <% }) %>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Books</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <a href="/book/new" class="button" role="button">New Book</a>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <table id="example" class="withDataTable" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th width="10">Issue Year</th>
+                <th width="10">Issue No.</th>
+                <th width="20">Book Tile</th>
+                <th width="20">Create Date</th>
+                <th width="40">Action</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Issue Year</th>
+                <th>Issue No.</th>
+                <th>Book Tile</th>
+                <th>Create Date</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+ 
+        <tbody>
+          <% _.each(data, function(data_year){ %>
+            <% _.each(data_year.issue_lists, function(data_list){ %>
+              <tr>
+                <td><%= data_list.issue_year %></td>
+                <td><%= data_list.issue_no %></td>              
+                <td><%= data_list.detail_title %></td>
+                <td><%= moment(data.service_date).format('DD MMM YYYY - HH:MM') %></td>
+                <td>
+                  <a href="/book/show/<%= data_list._id %>" class="button tiny" role="button">Preview</a>
+                  <a href="/book/edit/<%= data_list._id %>" class="button tiny" role="button">Edit</a>
+                  <a href="/book/delete/<%= data_list._id %>" class="button tiny alert" role="button">Delete</a>
+                </td>
+              </tr>
+            <% }) %>
+          <% }) %>
+        </tbody>
+    </table>    
+
+  </div>
 </div>

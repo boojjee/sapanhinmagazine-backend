@@ -62,7 +62,7 @@ module.exports = {
         var object_mapping = _.chain(bookFind).sortBy('issue_no').groupBy('issue_year').map(function(value, key) {
             return {
                 year: key,
-                issue_list: value
+                issue_lists: value
             }
         }).value();
 
@@ -70,7 +70,7 @@ module.exports = {
           status: 200,
           massage: "ok",
           year: criteria.year,
-          issue_list: object_mapping
+          issue_lists: object_mapping
         }
 
         res.json(data)
@@ -99,7 +99,7 @@ module.exports = {
             status: 200,
             massage: "ok",
             data: {
-              year_list: _.pluck(object_mapping, 'year')
+              year_lists: _.pluck(object_mapping, 'year')
             }
           }
 

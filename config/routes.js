@@ -60,7 +60,17 @@ module.exports.routes = {
   'post /book/create': {
     controller: 'Book',
     action: 'create'
+  },  
+  'get /book/edit/:id': {
+    controller: 'Book',
+    action: 'edit'
+  },  
+  'get /book/delete/:id': {
+    controller: 'Book',
+    action: 'destroy'
   },
+
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

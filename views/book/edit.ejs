@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Edit Book issue : <%= data.issue_no %></h1>
+  </div>
+</div>
+
+<form action="/book/create" method="POST" enctype="multipart/form-data" >
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Issue No.
+        <input type="text" name="issue_no" placeholder="01" value="<%= data.issue_no %>" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Issue Year.
+        <input type="text" name="issue_year" placeholder="2557" value="<%= data.issue_year %>" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Issue Month.
+        <input type="text" name="issue_year" placeholder="2557" value="<%= data.issue_month %>" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Book Title:
+        <input type="text" name="detail_title" placeholder="ขาดฉันแล้วเตินจะรู้สึก" value="<%= data.detail_title %>" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Book Description:
+        <textarea name="detail_description" cols="30" rows="10" placeholder=""><%= data.detail_description %></textarea>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Cover Image:
+        <input type="file" name="bookshelf_cover_image" placeholder="http://public.aws.com/issue_no1-2257.pdf" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>PDF URL:
+        <input type="file" name="pdf_book" placeholder="http://public.aws.com/issue_no1-2257.pdf" />
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <input type="submit" value="Submit" class="button">
+    </div>
+  </div>
+</form>
