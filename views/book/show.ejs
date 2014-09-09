@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Book Issue: <%=data.issue_no%> <%=data.detail_title%></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <table>
+      <tr>
+        <td>Book Status.</td>
+        <td>
+        <% if(data.book_status == 0){ %>
+          Pending...
+        <% }else{ %>
+          Publish
+        <%  } %>
+        </td>
+      </tr>
+      <tr>
+        <td>Issue No.</td>
+        <td><%=data.issue_no%></td>
+      </tr>
+      <tr>
+        <td>Issue Year</td>
+        <td><%=data.issue_year%></td>
+      </tr>
+      <tr>
+        <td>Issue Month</td>
+        <td><%=data.issue_month%></td>
+      </tr>
+      <tr>
+        <td>Book Title</td>
+        <td><%=data.detail_title%></td>
+      </tr>
+      <tr>
+        <td>Book Description</td>
+        <td><%=data.detail_description%></td>
+      </tr>
+      <tr>
+        <td>PDF Link Url</td>
+        <td><a href="<%=data.pdf_url%>"><%=data.pdf_url%></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h3>Book Cover</h3>
+    <div>
+      <img class="previw-image" src="<%=data.bookshelf_cover_image_url%>" alt="cover book">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 columns">
+    <h3>Book Image Preview</h3>
+    <% var tmp_ss = _.sortBy(data.detail_screenshot, function(o) { return o.screenshot_url; }) %>
+    <% _.each(tmp_ss, function(preview_img){ %>
+    <div class="preview-box">
+      <img class="previw-image"src="<%=preview_img.screenshot_url%>" alt="cover book">
+    </div>
+    <% }) %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="large-12 columns">
+    <hr>
+    <a href="/book/edit/<%= data._id %>" class="button tiny" role="button">Edit</a>
+  </div>
+</div>

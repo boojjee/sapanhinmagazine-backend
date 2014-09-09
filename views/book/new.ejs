@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<form action="/book/create" method="POST" enctype="multipart/form-data" >
+<form id="newBookForm" action="/book/create" method="POST" enctype="multipart/form-data" >
   <div class="row">
     <div class="large-12 columns">
       <label>Issue No.
@@ -40,27 +40,31 @@
       </label>
     </div>
   </div>
+  
+  <div class="row">
+    <div class="large-12 columns">
+      <label>PDF File:
+        <input type="file" name="pdf_book" accept="application/pdf" />
+      </label>
+      <hr>
+    </div>
+  </div>
+
   <div class="row">
     <div class="large-12 columns">
       <label>Cover Image:
-        <input type="file" name="bookshelf_cover_image" />
+
+        <input type="file" name="bookshelf_cover_image" accept="image/jpeg, image/jpg"/>
       </label>
       <hr>
     </div>
     
   </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <label>PDF File:
-        <input type="file" name="pdf_book" />
-      </label>
-      <hr>
-    </div>
-  </div>
+
   <div class="row">
     <div class="large-12 columns">
       <label>Preview 1:
-        <input type="file" name="preview1" />
+        <input type="file" name="preview1" accept="image/jpeg, image/jpg"/>
       </label>
     </div>
   </div>
@@ -68,7 +72,7 @@
   <div class="row">
     <div class="large-12 columns">
       <label>Preview 2:
-        <input type="file" name="preview2" />
+        <input type="file" name="preview2" accept="image/jpeg, image/jpg"/>
       </label>
     </div>
   </div>
@@ -76,7 +80,7 @@
   <div class="row">
     <div class="large-12 columns">
       <label>Preview 3:
-        <input type="file" name="preview3" />
+        <input type="file" name="preview3" accept="image/jpeg, image/jpg"/>
       </label>
     </div>
   </div>
@@ -84,7 +88,7 @@
   <div class="row">
     <div class="large-12 columns">
       <label>Preview 4:
-        <input type="file" name="preview4" />
+        <input type="file" name="preview4" accept="image/jpeg, image/jpg"/>
       </label>
     </div>
   </div>
@@ -92,7 +96,7 @@
   <div class="row">
     <div class="large-12 columns">
       <label>Preview 5:
-        <input type="file" name="preview5" />
+        <input type="file" name="preview5"/>
       </label>
     </div>
   </div>
@@ -100,7 +104,122 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <input type="submit" value="Submit" class="button">
+      <input type="hidden" name="book_status" value="0">
+      <input id="submit_newbook" type="submit" value="Submit" class="button">
     </div>
   </div>
 </form>
+
+<div id="uploanding-contaniner" class="uploanding-contaniner">
+  <div id="uploanding" class="uploanding"></div>  
+</div>
+
+<script>
+  $.validator.addMethod('filesize', function(value, element, param) {
+      return this.optional(element) || (element.files[0].size <= param) 
+  });
+
+  $( "#newBookForm" ).validate({
+    rules: {
+      issue_no:{
+        required: true,
+      },
+      issue_year:{
+        required: true,
+      },
+      issue_month:{
+        required: true,
+      },
+      issue_no:{
+        required: true,
+      },
+      bookshelf_cover_image: {
+        required: true,
+        extension: "jpeg|jpg",
+        filesize: 500000
+      },
+      pdf_book: {
+        required: true,
+        extension: "pdf",
+        filesize: 10000000
+      },
+      preview1: {
+        required: true,
+        extension: "jpeg|jpg",
+        filesize: 500000
+      },
+      preview2: {
+        required: true,
+        extension: "jpeg|jpg",
+        filesize: 500000
+      },
+      preview3: {
+        required: true,
+        extension: "jpeg|jpg",
+        filesize: 500000
+      },
+      preview4: {
+        required: true,
+        extension: "jpeg|jpg",
+        filesize: 500000
+
+      },
+      preview5: {
+        required: true,
+        extension: "jpeg|jpg",
+        filesize: 500000
+      }
+    },
+    messages: {
+      bookshelf_cover_image: {
+        required: "this field is mandatory",  
+        extension: "accepts jpg or jpeg only",
+        filesize: "limit file size 500KB"
+      },
+      pdf_book: {
+        required: "this field is mandatory",  
+        extension: "accepts PDF only",
+        filesize: "limit file size 10MB"
+      },
+      preview1: {
+        required: "this field is mandatory",  
+        extension: "accepts jpg or jpeg only",
+        filesize: "limit file size 500KB"
+      },
+      preview2: {
+        required: "this field is mandatory",  
+        extension: "accepts jpg or jpeg only",
+        filesize: "limit file size 500KB"
+      },
+      preview3: {
+        required: "this field is mandatory",  
+        extension: "accepts jpg or jpeg only",
+        filesize: "limit file size 500KB"
+      },
+      preview4: {
+        required: "this field is mandatory",  
+        extension: "accepts jpg or jpeg only",
+        filesize: "limit file size 500KB"
+      },
+      preview5: {
+        required: "this field is mandatory",  
+        extension: "accepts jpg or jpeg only",
+        filesize: "limit file size 500KB"
+      },
+    },
+    submitHandler : function(form){
+      // this.disabled = true;
+      console.log("test1")
+      var body = document.body,
+      html = document.documentElement;
+      var height = Math.max( body.scrollHeight, body.offsetHeight,html.clientHeight, html.scrollHeight, html.offsetHeight );
+      $("#uploanding-contaniner").css("height", height);
+      $("#uploanding-contaniner").show();
+      $('form').find(":submit").attr("disabled", true).attr("value","Submitting...");
+      form.submit();
+      console.log("test2")
+    }
+  });
+
+
+</script>

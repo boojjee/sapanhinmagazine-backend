@@ -57,6 +57,10 @@ module.exports.routes = {
 
 
 
+  'get /book/show/:id': {
+    controller: 'Book',
+    action: 'show'
+  },
   'post /book/create': {
     controller: 'Book',
     action: 'create'

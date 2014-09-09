@@ -1,0 +1,25 @@
+.uploanding-contaniner{
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  z-index: 999999;
+  display: none;
+  width: 100%;
+  top:0;
+}
+.uploanding{
+  background:url('/images/loader.gif') 50% 45% no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.previw-image{
+  width: 180px;
+  height: 256px;
+}
+.preview-box{
+  width: 184px;
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+}
